@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap 4 CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #343a40;
+      }
+
+      .login-card {
+        max-width: 400px;
+        margin: auto;
+        margin-top: 10vh;
+        padding: 2rem;
+        background: #1c1e21;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(255, 255, 150, 0.4);
+      }
+
+      .form-control::placeholder {
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="text-center mb-4">
+        <h3>Login</h3>
+      </div>
+      <form id="loginForm" onsubmit="return false;">
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="Enter email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+        <button class="btn btn-success btn-block" id="loginBtn">Login</button>
+      </form>
+      <div
+        class="mt-3 text-center text-warning"
+        id="errorMsg"
+        style="display: none"
+      ></div>
+    </div>
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#loginBtn").click(function () {
+          const email = $("#email").val().trim();
+          const password = $("#password").val().trim();
+
+          if (!email || !password) {
+            $("#errorMsg").text("Please fill all fields").show();
+            return;
+          }
+
+          const data = {
+            email: email,
+            password: password,
+          };
+
+          $.ajax({
+            url: "/login", // Spring Boot controller path
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+              if (response.status === "success") {
+                window.location.href = "/dashboard";
+              } else {
+                $("#errorMsg").text(response.message).show();
+              }
+            },
+            error: function (xhr) {
+              $("#errorMsg").text("Login failed. Try again.").show();
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
