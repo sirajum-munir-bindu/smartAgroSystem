@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link
+<head>
+  <meta charset="UTF-8">
+
+  <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <title>Details Card with Centered Popup</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+  <title>Cultivation Product Cards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      /* Start Navbar */
+    /* Start Navbar */
 
       .nav_bar {
         height: 100px;
@@ -89,114 +90,81 @@
       }
       /* End Navbar */
 
-      .body {
-        height: 100vh;
-        background: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Segoe UI", sans-serif;
-        position: relative;
-      }
+    .body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      padding: 40px;
+    }
 
-      .details-card {
-        background-color: #fffaf2;
-        padding: 40px 35px;
-        width: 450px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        text-align: center;
-      }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
 
-      .details-card img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 20px;
-      }
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-      .details-card h2 {
-        font-size: 26px;
-        font-weight: bold;
-        margin-bottom: 25px;
-        color: #222;
-      }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
 
-      .info-text {
-        text-align: left;
-        margin-bottom: 30px;
-        font-size: 18px;
-        line-height: 1.8;
-        color: #333;
-      }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: #e0e0e0;
+    }
 
-      .info-text span {
-        font-weight: 600;
-      }
+    .card-body {
+      padding: 20px;
+      text-align: center;
+    }
 
-      .btn-group {
-        display: flex;
-        justify-content: space-between;
-        gap: 15px;
-      }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #111;
+    }
 
-      .btn-group button {
-        flex: 1;
-        padding: 12px 0;
-        border: 2px solid #000;
-        border-radius: 12px;
-        background-color: #fff;
-        font-weight: 600;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
+    .product-name {
+      font-size: 17px;
+      color: #444;
+      margin-bottom: 8px;
+    }
 
-      .btn-group .confirm {
-        background-color: #4caf50;
-        color: white;
-        border: none;
-      }
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
 
-      .btn-group .confirm:hover {
-        background-color: #45a049;
-      }
+    .card button {
+      background-color: #5b21b6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-      .btn-group .cancel:hover {
-        background-color: #f0f0f0;
-      }
+    .card button:hover {
+      background-color: #4c1d95;
+    }
 
-      .cancel a {
-        text-decoration: none;
-        color: #000;
-      }
-
-      /* Popup Styles (Centered Top) */
-      .popup {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-20px);
-        background-color: #4caf50;
-        color: white;
-        padding: 16px 30px;
-        border-radius: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        transition: all 0.4s ease;
-        z-index: 999;
-      }
-
-      .popup.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-
-      
-
-
-      /* Start Footer */
+    /* Start Footer */
       .footer {
         width: auto;
         height: 450px;
@@ -312,11 +280,28 @@
         margin-top: 20px;
       }
 
-      
+      .cancel a{
+        text-decoration: none;
+        color:#000000;
+      }
+
       /* End Footer */
-    </style>
-  </head>
-  <body>
+
+    @media (max-width: 1000px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
     <div class="nav_bar">
       <div class="nav_logo">
         <div class="logo_png">
@@ -330,8 +315,8 @@
       </div>
       <div class="nav_list">
         <ul class="nav_ul">
-          <li class="nav_text active"><a href="#">Home</a></li>
-          <li class="nav_text">
+          <li class="nav_text"><a href="/dashboard" target="_blank">Home</a></li>
+          <li class="nav_text active">
             <a href="./shop.html" target="_blank">Shop</a>
           </li>
           <li class="nav_text">
@@ -363,49 +348,80 @@
       </div>
     </div>
 
+
     <div class="body">
-      <!-- Popup Notification -->
-      <div id="popup" class="popup">
-        🎉 Congratulation, Your have booked successfully.
+
+        <div class="container">
+    <!-- Seed 1 -->
+    <div class="card">
+      <img src="https://i.ibb.co.com/QqJk8zB/download.jpg" alt="Seed">
+      <div class="card-body">
+        <div class="card-title">Seeds</div>
+        <div class="product-name">Hybrid Rice Seed <span class="price">-৳ 280</span></div>
+        
+        <button>Buy Now</button>
       </div>
-
-      <div class="details-card">
-        <img
-          src="https://i.ibb.co.com/kgn5yGfK/photo-2025-04-15-21-50-19.jpg"
-          alt="Profile Image"
-        />
-        <h2>Details</h2>
-        <div class="info-text">
-          <p><span>Name:</span> Jamal </p>
-          <p><span>Age:</span> 25</p>
-          <p><span>Occupation:</span> Farming</p>
-          <p><span>Experience:</span> 2 years</p>
-          <p><span>Charge:</span> 8000/- per month (Negotiable)</p>
-          <br />
-          <p>
-            <span><b>Booked by:</b></span> <b>Kaka babu</b>
-          </p>
-        </div>
-        <div class="btn-group">
-          <button class="confirm" onclick="showPopup()">Confirm</button>
-          <button class="cancel"><a href="./dashboard" target="_blank">Cancel</a></button>
-        </div>
-      </div>
-
-      <script>
-        function showPopup() {
-          const popup = document.getElementById("popup");
-          popup.classList.add("show");
-
-          // Hide after 3 seconds
-          setTimeout(() => {
-            popup.classList.remove("show");
-          }, 3000);
-        }
-      </script>
     </div>
 
-    <footer class="footer">
+    <!-- Seed 2 -->
+    <div class="card">
+      <img src="https://i.ibb.co.com/4RzZMF7H/download-1.jpg" alt="Seed">
+      <div class="card-body">
+        <div class="card-title">Seeds</div>
+        <div class="product-name">High Yield Wheat <span class="price">-৳ 400</span></div>
+        
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Fertilizer 1 -->
+    <div class="card">
+      <img src="https://i.ibb.co.com/ns4dk3fw/download-2.jpg" alt="Fertilizer">
+      <div class="card-body">
+        <div class="card-title">Fertilizer</div>
+        <div class="product-name">Urea Granules <span class="price">-৳ 200</span></div>
+        
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Fertilizer 2 -->
+    <div class="card">
+      <img src="https://i.ibb.co.com/67fhzHZ0/download-3.jpg" alt="Fertilizer">
+      <div class="card-body">
+        <div class="card-title">Fertilizer</div>
+        <div class="product-name">DAP Super Phosphate <span class="price">-৳ 350</span></div>
+        
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Medicine 1 -->
+    <div class="card">
+      <img src="https://i.ibb.co.com/pjRY7R4Y/download-4.jpg" alt="Medicine">
+      <div class="card-body">
+        <div class="card-title">Medicine</div>
+        <div class="product-name">Pesticide - Cropsafe <span class="price">-৳ 590</span></div>
+        
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Medicine 2 -->
+    <div class="card">
+      <img src="https://i.ibb.co.com/C32PLZmb/download-5.jpg" alt="Medicine">
+      <div class="card-body">
+        <div class="card-title">Medicine</div>
+        <div class="product-name">Fungicide - AgroShield  <span class="price">-৳ 280</span></div>
+        
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+    </div>
+
+  <footer class="footer">
       <div class="footer-container">
         <div class="footer-column">
           <h2 class="logo">Smart Agro</h2>
@@ -448,5 +464,6 @@
         <p>2023 funiro. All rights reserved</p>
       </div>
     </footer>
-  </body>
+
+</body>
 </html>
