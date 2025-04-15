@@ -163,6 +163,11 @@
         background-color: #f0f0f0;
       }
 
+      .cancel a {
+        text-decoration: none;
+        color: #000;
+      }
+
       /* Popup Styles (Centered Top) */
       .popup {
         position: fixed;
@@ -183,6 +188,9 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
+
+      
+
 
       /* Start Footer */
       .footer {
@@ -300,6 +308,7 @@
         margin-top: 20px;
       }
 
+      
       /* End Footer */
     </style>
   </head>
@@ -375,7 +384,7 @@
         </div>
         <div class="btn-group">
           <button class="confirm" onclick="showPopup()">Confirm</button>
-          <button class="cancel">Cancel</button>
+          <button class="cancel"><a href="./dashboard" target="_blank">Cancel</a></button>
         </div>
       </div>
 
