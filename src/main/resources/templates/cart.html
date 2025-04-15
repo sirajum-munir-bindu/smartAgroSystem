@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Details Card with Centered Popup</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Start Navbar */
+
+      .nav_bar {
+        height: 100px;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #ffffff;
+      }
+
+      .nav_logo {
+        height: 36px;
+        width: 144px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo_png {
+        padding-left: 50px;
+      }
+      .logo_img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .logo_text {
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 100%;
+        letter-spacing: 0px;
+        color: #000000;
+        margin-left: 8px;
+      }
+
+      .nav_ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        list-style-type: none;
+      }
+
+      .nav_ul a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .nav_text {
+        padding-left: 50px;
+      }
+
+      .nav_text.active {
+        font-size: 25px;
+        font-weight: 900;
+      }
+
+      .nav_search_icon {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .icon_0 {
+        padding-right: 50px;
+      }
+
+      .nav_search_icon i {
+        width: 28pd;
+        height: 28px;
+        display: flex;
+        color: #000000;
+      }
+      /* End Navbar */
+
+      .body {
+        height: 100vh;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", sans-serif;
+        position: relative;
+      }
+
+      .details-card {
+        background-color: #fffaf2;
+        padding: 40px 35px;
+        width: 450px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      .details-card img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+
+      .details-card h2 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #222;
+      }
+
+      .info-text {
+        text-align: left;
+        margin-bottom: 30px;
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+      }
+
+      .info-text span {
+        font-weight: 600;
+      }
+
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+      }
+
+      .btn-group button {
+        flex: 1;
+        padding: 12px 0;
+        border: 2px solid #000;
+        border-radius: 12px;
+        background-color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-group .confirm {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+      }
+
+      .btn-group .confirm:hover {
+        background-color: #45a049;
+      }
+
+      .btn-group .cancel:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* Popup Styles (Centered Top) */
+      .popup {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        background-color: #4caf50;
+        color: white;
+        padding: 16px 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: all 0.4s ease;
+        z-index: 999;
+      }
+
+      .popup.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Start Footer */
+      .footer {
+        width: auto;
+        height: 450px;
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+        border-top: 1px solid #bebebe;
+        padding-top: 100px;
+        padding-left: 100px;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        height: 250px;
+        width: auto;
+      }
+
+      .footer-column {
+        flex: 1 1 200px;
+        min-width: 200px;
+      }
+
+      .logo {
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        line-height: 100%;
+        letter-spacing: 0px;
+        padding-bottom: 35px;
+      }
+
+      .footer-column h4 {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        color: #9f9f9f;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        line-height: 100%;
+        letter-spacing: 0px;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-column ul li {
+        margin: 8px 0;
+      }
+
+      .footer-column ul li a {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 16px;
+        list-style: none;
+        padding-bottom: 30px;
+        line-height: 100%;
+        letter-spacing: 0px;
+        text-decoration: none;
+        color: #000;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #999;
+      }
+
+      address {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 16px;
+        color: #888;
+        line-height: 100%;
+        letter-spacing: 0px;
+        /* padding-left: 90px; */
+      }
+
+      .newsletter-form {
+        display: flex;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        max-width: 250px;
+      }
+
+      .newsletter-form input {
+        border: none;
+        outline: none;
+        font-size: 12px;
+        flex-grow: 1;
+      }
+
+      .newsletter-form button {
+        background: none;
+        border: none;
+        color: #000;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        padding-left: 10px;
+      }
+
+      .footer-bottom {
+        text-align: left;
+        font-size: 12px;
+        color: #333;
+        padding: 20px 0 0 0;
+        border-top: 1px solid #bebebe;
+        margin-top: 20px;
+      }
+
+      /* End Footer */
+    </style>
+  </head>
+  <body>
+    <div class="nav_bar">
+      <div class="nav_logo">
+        <div class="logo_png">
+          <img
+            src="https://i.ibb.co.com/hJJVzRQ0/5324f4ac-d63a-4fb0-83b5-7550eb31c059.png"
+            alt="Nav_Logo"
+            class="logo_img"
+          />
+        </div>
+        <div class="logo_text">Smart Agro</div>
+      </div>
+      <div class="nav_list">
+        <ul class="nav_ul">
+          <li class="nav_text active"><a href="#">Home</a></li>
+          <li class="nav_text">
+            <a href="./shop.html" target="_blank">Shop</a>
+          </li>
+          <li class="nav_text">
+            <a href="./about.html" target="_blank">About</a>
+          </li>
+          <li class="nav_text">
+            <a href="./contact.html" target="_blank">Contact</a>
+          </li>
+          <li class="nav_text">
+            <a href="./blog.html" target="_blank">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav_search_icon">
+        <a href="#" class="icon_0">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <a href="#" class="icon_0">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+
+        <a href="#" class="icon_0">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+
+        <a href="#" class="icon_0">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="body">
+      <!-- Popup Notification -->
+      <div id="popup" class="popup">
+        🎉 Congratulation, Your have booked successfully.
+      </div>
+
+      <div class="details-card">
+        <img
+          src="https://i.ibb.co.com/XfdjrhXY/photo-2025-04-15-21-21-43.jpg"
+          alt="Profile Image"
+        />
+        <h2>Details</h2>
+        <div class="info-text">
+          <p><span>Name:</span> Jolil Jobbar</p>
+          <p><span>Age:</span> 35</p>
+          <p><span>Occupation:</span> Farming</p>
+          <p><span>Experience:</span> 20 years</p>
+          <p><span>Charge:</span> 8000/- per month (Negotiable)</p>
+          <br />
+          <p>
+            <span><b>Booked by:</b></span> <b>Anis Khondokar</b>
+          </p>
+        </div>
+        <div class="btn-group">
+          <button class="confirm" onclick="showPopup()">Confirm</button>
+          <button class="cancel">Cancel</button>
+        </div>
+      </div>
+
+      <script>
+        function showPopup() {
+          const popup = document.getElementById("popup");
+          popup.classList.add("show");
+
+          // Hide after 3 seconds
+          setTimeout(() => {
+            popup.classList.remove("show");
+          }, 3000);
+        }
+      </script>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h2 class="logo">Smart Agro</h2>
+          <address>
+            Daffodil Smart City,<br />
+            Ashulia, Savar<br />
+          </address>
+        </div>
+
+        <div class="footer-column">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="./shop.html" target="_blank">Shop</a></li>
+            <li><a href="./about.html" target="_blank">About</a></li>
+            <li><a href="./contact.html" target="_blank">Contact</a></li>
+            <li><a href="./blog.html" target="_blank">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policies</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Newsletter</h4>
+          <form class="newsletter-form">
+            <input type="text" placeholder="Enter Your Email Address" />
+            <button>SUBSCRIBE</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>2023 funiro. All rights reserved</p>
+      </div>
+    </footer>
+  </body>
+</html>

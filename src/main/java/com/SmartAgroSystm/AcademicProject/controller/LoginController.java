@@ -69,4 +69,14 @@ public class LoginController {
     public String dashboard(HttpSession session){
         return "dashboard";
     }
+
+    @GetMapping("/cart")
+    public String cart(HttpSession session){
+        return "cart";
+    }
+
+    @GetMapping("/cart_jamal")
+    public String cart_jamal(HttpSession session){
+        return "cart_jamal";
+    }
 }
