@@ -28,20 +28,20 @@ The goal of this project is to improve the agricultural sector by combining trad
 * Offer a user-friendly interface with responsive design
 
 
-<b>Technologies Used</b>
+# Technologies Used
 
- Layer	                 Technologies
+ Layer	                 Technologies<br>
 
-Backend	           Java Spring Boot, Spring MVC
-Frontend	          Thymeleaf, HTML, CSS, Bootstrap
-Database	          MySQL (via XAMPP)
-IDE/Tools	         VS Code, XAMPP
-Web Server	        Apache Tomcat (embedded in Spring Boot)
+Backend	           Java Spring Boot, Spring MVC<br>
+Frontend	          Thymeleaf, HTML, CSS, Bootstrap<br>
+Database	          MySQL (via XAMPP)<br>
+IDE/Tools	         VS Code, XAMPP<br>
+Web Server	        Apache Tomcat (embedded in Spring Boot)<br>
 
 
-<b>How to Run the Project</b>
+# How to Run the Project
 
-Prerequisites:
+<b>Prerequisites:</b>
 
     * Java JDK 8 or later
     * Maven
@@ -86,11 +86,11 @@ spring.jpa.hibernate.ddl-auto=update
 
 # Author
 
-Sirajum Munir
+Sirajum Munir<br>
 https://github.com/sirajum-munir-bindu
 
 
-<b>License</b>
+# License
 
 This project is licensed under the MIT License. 
 
