@@ -1,115 +1,96 @@
-# smartAgroSystem
 
-#Smart Agro System
+# Smart Agro System
 
 Smart Agro System is a Java Spring Boot web application designed to modernize agriculture by supporting farmers with technology. This platform integrates tools for monitoring labor, selling agricultural inputs, and managing farm activities—all from one clean interface.
 
-Features
 
-Farmer & Labor Management System
+<b>Features</b>
 
-Online Shop (Seeds, Fertilizer, Medicine)
-
-User Authentication (Login/Register)
-
-Admin Dashboard
-
-Clean UI built with Thymeleaf & Bootstrap
-
-Backend in Java Spring Boot
-
-MySQL Database via XAMPP
+* Farmer & Labor Management System
+* Online Shop (Seeds, Fertilizer, Medicine)
+* User Authentication (Login/Register)
+* Admin Dashboard
+* Clean UI built with Thymeleaf & Bootstrap
+* Backend in Java Spring Boot
+* MySQL Database via XAMPP
 
 
-
-
-Project Discussion
+<b>Project Discussion</b>
 
 The goal of this project is to improve the agricultural sector by combining traditional farming techniques with modern IT. Smart Agro System provides digital tools to farmers to manage their resources, labor, and agricultural inputs more efficiently.
 
 
-Objectives
+<b>Objectives</b>
 
-Help farmers access products like seeds and fertilizers
-
-Create a dashboard to manage laborers and tasks
-
-Secure login & session management
-
-Offer a user-friendly interface with responsive design
+* Help farmers access products like seeds and fertilizers
+* Create a dashboard to manage laborers and tasks
+* Secure login & session management
+* Offer a user-friendly interface with responsive design
 
 
-
-Technologies Used
+<b>Technologies Used</b>
 
  Layer	                 Technologies
 
 Backend	           Java Spring Boot, Spring MVC
-Frontend	   Thymeleaf, HTML, CSS, Bootstrap
-Database	   MySQL (via XAMPP)
-IDE/Tools	   VS Code, IntelliJ IDEA, Postman, XAMPP
-Web Server	   Apache Tomcat (embedded in Spring Boot)
+Frontend	          Thymeleaf, HTML, CSS, Bootstrap
+Database	          MySQL (via XAMPP)
+IDE/Tools	         VS Code, XAMPP
+Web Server	        Apache Tomcat (embedded in Spring Boot)
 
 
-How to Run the Project
+<b>How to Run the Project</b>
 
-Prerequisites
+Prerequisites:
 
-    Java JDK 8 or later
-    Maven
-    XAMPP (MySQL running)
-    Git
+    * Java JDK 8 or later
+    * Maven
+    * XAMPP (MySQL running)
+    * Git
 
-Setup:
+<b>Setup:</b>
 
 Clone the Repository
 
 git clone https://github.com/your-username/smart-agro-system.git
 cd smart-agro-system
 
-Start XAMPP
+<b>Start XAMPP</b>
 
-    Launch XAMPP and start Apache and MySQL
-    Open phpMyAdmin and create a database named:
+    * Launch XAMPP and start Apache and MySQL
+    * Open phpMyAdmin and create a database named:  sas
 
-smart_agro_db
+<b>Configure application.properties</b>
 
-Configure application.properties
-
-spring.datasource.url=jdbc:mysql://localhost:3306/smart_agro_db
+spring.datasource.url=jdbc:mysql://localhost:3306/sas
 spring.datasource.username=root
 spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=update
 
-Run the Application
+<b>Run the Application</b>
+     mvn spring-boot:run
 
-mvn spring-boot:run
-
-Access the App
+<b>Access the App</b>
 
     Visit: http://localhost:8080
 
 
-Future Enhancements
+<b>Future Enhancements</b>
 
-    IoT integration for irrigation and sensors
-
-    Mobile version (Android app)
-
-    Crop prediction using AI
-
-    Multi-language support
-
-    SMS alert system for updates
+    * IoT integration for irrigation and sensors
+    * Mobile version (Android app)
+    * Crop prediction using AI
+    * Multi-language support
+    * SMS alert system for updates
 
 
-Author
+# Author
 
-Bindu
-🔗 GitHub
+Sirajum Munir
+https://github.com/sirajum-munir-bindu
 
 
-License
+<b>License</b>
 
 This project is licensed under the MIT License. 
 
