@@ -50,7 +50,7 @@ Web Server---------------->Apache Tomcat (embedded in Spring Boot)<br>
 
 Clone the Repository<br>
 
-git clone https://github.com/your-username/smart-agro-system.git<br>
+git clone https://github.com/sirajum-munir-bindu/smartAgroSystem.git<br>
 cd smart-agro-system
 
 <b>Start XAMPP</b>
