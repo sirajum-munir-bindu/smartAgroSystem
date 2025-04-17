@@ -65,8 +65,8 @@ spring.datasource.username=root
 spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=update
 
-<b>Run the Application</b>
-     mvn spring-boot:run
+<b>Run the Application</b><br>
+     * mvn spring-boot:run
 
 <b>Access the App</b>
 
