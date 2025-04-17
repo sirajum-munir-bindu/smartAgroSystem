@@ -30,13 +30,11 @@ The goal of this project is to improve the agricultural sector by combining trad
 
 # Technologies Used
 
- Layer	                 Technologies<br>
-
-Backend	           Java Spring Boot, Spring MVC<br>
-Frontend	          Thymeleaf, HTML, CSS, Bootstrap<br>
-Database	          MySQL (via XAMPP)<br>
-IDE/Tools	         VS Code, XAMPP<br>
-Web Server	        Apache Tomcat (embedded in Spring Boot)<br>
+Backend	------------------>  Java Spring Boot, Spring MVC<br>
+Frontend------------------>Thymeleaf, HTML, CSS, Bootstrap<br>
+Database------------------>MySQL (via XAMPP)<br>
+IDE/Tools----------------->VS Code, XAMPP<br>
+Web Server---------------->Apache Tomcat (embedded in Spring Boot)<br>
 
 
 # How to Run the Project
@@ -50,9 +48,9 @@ Web Server	        Apache Tomcat (embedded in Spring Boot)<br>
 
 <b>Setup:</b>
 
-Clone the Repository
+Clone the Repository<br>
 
-git clone https://github.com/your-username/smart-agro-system.git
+git clone https://github.com/your-username/smart-agro-system.git<br>
 cd smart-agro-system
 
 <b>Start XAMPP</b>
